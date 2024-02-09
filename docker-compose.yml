@@ -1,0 +1,28 @@
+version: '3.4'
+
+services:
+  accountservice:
+    image: ${DOCKER_REGISTRY-}accountservice
+    build:
+      context: .
+      dockerfile: AccountService/Dockerfile
+    ports:
+        - "5002:80"
+
+  apigateway:
+    image: ${DOCKER_REGISTRY-}apigateway
+    build:
+      context: .
+      dockerfile: APIGateway/Dockerfile
+    ports:
+      - "5004:80"
+
+
+  productsservice:
+    image: ${DOCKER_REGISTRY-}productsservice
+    build:
+      context: .
+      dockerfile: ProductsService/Dockerfile
+    ports:
+      - "5000:80"
+
